@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: "Roboto", sans-serif;
+}
+.headerListItem{
+  @apply flex items-center gap-3
+}
+
+.headerListItem.active{
+  @apply border border-white p-2   rounded-full
+}
+.search-icons{
+  @apply text-slate-400
+}
+
+.counter-button{
+  @apply text-bookingBlue text-xl cursor-pointer
+}
+
+.options-item{
+  @apply flex items-center justify-between
+}
+
+.options-title{
+  @apply font-medium text-[14px]
+}
+.options-counter{
+  @apply border border-black py-1 px-4 flex items-center  rounded-sm min-w-28 justify-between
+}
+
+.disabled-counter{
+  @apply disabled:text-slate-400 disabled:cursor-not-allowed
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
