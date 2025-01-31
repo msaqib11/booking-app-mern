@@ -4,11 +4,12 @@ const app = express()
 import routes from "./routes/index.js"
 import { handleError } from "./middlewares/errorHandler.middleware.js"
 import cors from "cors"
+import { ADMIN_URI, CLIENT_URI } from "./config/env.js";
 
 //Middleware
 app.use(cors(
     {
-        origin: ["http://localhost:5173","http://localhost:3001"], //client, admin
+        origin: [ADMIN_URI,CLIENT_URI],
         credentials: true,
     }
 ))
