@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useContext, useState } from 'react'
 import { Context } from '../../context/contextApi'
 import { getDateInRange } from '../../utils/dateUtil'
-import axios, { all } from 'axios'
+import axios from 'axios'
 import { API_BASE_URL } from '../../config/api'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,7 +13,6 @@ const ReserveRoom = ({ setIsModalOpen, hotelID }) => {
     const { bookingDate } = useContext(Context)
     const navigate = useNavigate()
     const [selectedRooms, setSelectedRooms] = useState([])
-    console.log(selectedRooms, "selectedRooms")
     function handleChecked(e) {
         const Checked = e.target.checked;
         const value = e.target.value;

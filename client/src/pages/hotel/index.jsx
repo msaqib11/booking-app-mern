@@ -1,6 +1,5 @@
-import { faBanSmoking, faBroom, faCircleArrowLeft, faDollarSign, faLocationDot, faPeopleRoof } from "@fortawesome/free-solid-svg-icons"
+import { faBanSmoking, faBroom, faCircleArrowLeft,faLocationDot, faPeopleRoof, faRupeeSign } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { PhotosGalleryImages } from "../../utils/constants"
 import { faProductHunt } from "@fortawesome/free-brands-svg-icons"
 import { useContext, useState } from "react"
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons"
@@ -156,7 +155,7 @@ const Hotel = () => {
                   </p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <FontAwesomeIcon icon={faDollarSign} />
+                  <FontAwesomeIcon icon={faRupeeSign} />
                   <p className="text-lg font-extrabold">{getDatediff * data.cheapestPrice * bookingOPtions.room} ({getDatediff} Nights)
                   </p>
                 </div>
