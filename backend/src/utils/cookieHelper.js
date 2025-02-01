@@ -7,8 +7,8 @@ const cookieHelper = {
         // Cookie options
         const cookieOptions = {
             httpOnly: true,        // Prevents JavaScript access
-            secure: process.env.NODE_ENV === 'production',  // HTTPS only in production
-            sameSite: 'strict',    // Protection against CSRF
+            secure: process.env.NODE_ENV === 'production',  // true in production, false in development
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-origin in prod, 'lax' for local
             maxAge: 24 * 60 * 60 * 1000,  // 24 hours in milliseconds
             path: '/'             // Cookie is accessible on all routes
         };
@@ -17,6 +17,8 @@ const cookieHelper = {
     clearTokenCookie:(res)=>{
         res.cookie('access_token', '', {
             httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
             expires: new Date(0),
             path : '/'
         })
