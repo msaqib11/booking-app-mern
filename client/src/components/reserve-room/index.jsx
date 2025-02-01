@@ -34,7 +34,23 @@ const ReserveRoom = ({ setIsModalOpen, hotelID }) => {
                 return res
             }))
             setIsModalOpen(false)
-            navigate("/")
+           // Navigate to thank you page with booking details
+        navigate("/thank-you", {
+            state: {
+                bookingDetails: {
+                    hotelName: data[0]?.title || "Hotel Name", // Add hotel name from your data
+                    checkIn: bookingDate[0].startDate,
+                    checkOut: bookingDate[0].endDate,
+                    roomNumbers: selectedRooms.map(roomId => {
+                        const room = data
+                            .flatMap(item => item.roomNumbers)
+                            .find(room => room._id === roomId);
+                        return room?.number;
+                    }),
+                    totalRooms: selectedRooms.length,
+                }
+            }
+        });
         } catch (error) {
             console.log(error)
         }

@@ -9,6 +9,7 @@ import AppContext from './context/contextApi'
 import { Provider } from "react-redux"
 import { store } from './store/store'
 import Login from './pages/login'
+import ThankYouPage from './pages/thank-you/index.jsx'
 function App() {
 
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path='/hotels' element={<HotelList />} />
               <Route path='/hotel/:id' element={<Hotel />} />
+              <Route path="/thank-you" element={<ThankYouPage/>} />
             </Route>
             <Route >
               <Route path='/login' element={<Login />} />
