@@ -9,7 +9,17 @@ export const createHotel = async (req, res, next) => {
     if (req.files && req.files.length > 0) {
       await Promise.all(req.files.map(async (file) => {
         const cloudinaryRes = await uploadOnCloudinary(file.path, "hotels")
-        fs.unlinkSync(file.path)
+        // Check if file exists before trying to delete it
+
+        // Safely unlink the file
+        try {
+          if (fs.existsSync(file.path)) {
+            fs.unlinkSync(file.path)
+          }
+        } catch (unlinkError) {
+          console.error('Error deleting temp file:', unlinkError)
+          // Continue execution even if unlink fails
+        }
         if (cloudinaryRes?.url) {
           cloudinaryPath.push(cloudinaryRes.url)
         }
