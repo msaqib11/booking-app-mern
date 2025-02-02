@@ -22,7 +22,9 @@ const AddHotel = () => {
         const files = Array.from(e.target.files);
         setSelectedFiles(files);
     };
-
+    const handleFeatured = (e) => {
+        setIsFeatured(e.target.checked)
+    }
     const handleSubmit = async (e) => {
         setIsUploading(true)
         setUploadProgress(0)
@@ -39,6 +41,8 @@ const AddHotel = () => {
             roomsId.forEach((roomId) => {
                 data.append("rooms[]", roomId)
             })
+
+            data.append("isFeatured", isFeatured)
             const res = await axios.post(`${API_BASE_URL}/hotels`,data,{withCredentials:true,
                 headers:{
                     "Content-Type":"multipart/form-data"
@@ -189,7 +193,7 @@ const AddHotel = () => {
                                 id="isFeatured"
                                 name="isFeatured"
                                 checked={isFeatured}
-                                onChange={(e) => setIsFeatured(e.target.checked)}
+                                onChange={handleFeatured}
                                 className="rounded text-blue-600"
                             />
                             <span className="text-sm">Featured Property</span>
