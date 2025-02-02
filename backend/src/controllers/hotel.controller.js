@@ -8,9 +8,12 @@ export const createHotel = async (req, res, next) => {
   try {
     if (req.files && req.files.length > 0) {
       await Promise.all(req.files.map(async (file) => {
+        // Add existence check here
+        if (!fs.existsSync(file.path)) {
+          console.error('File not found:', file.path);
+          return;
+        }
         const cloudinaryRes = await uploadOnCloudinary(file.path, "hotels")
-        // Check if file exists before trying to delete it
-
         // Safely unlink the file
         try {
           if (fs.existsSync(file.path)) {
